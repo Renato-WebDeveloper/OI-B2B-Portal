@@ -35,6 +35,7 @@ Consumo de base de dados PostgreSql externa para acompanhamento de alguns indica
 - [X] PHP v7.1
 - [X] MySql
 - [X] Bootstrap v4
+- [X] Composer
 - [X] Css
 - [X] Html
 - [X] Python 3.6 -> Externo ao software (Apoia a plataforma com extração de dados)
@@ -47,10 +48,10 @@ Consumo de base de dados PostgreSql externa para acompanhamento de alguns indica
 
 ### Screenshots
 
-<img src="./screenshots/login.png">
-<img src="./screenshots/register.png">
-<img src="./screenshots/index.png">
-<img src="./screenshots/upload.png">
+<img src="./assets/screenshots/login.png">
+<img src="./assets/screenshots/register.png">
+<img src="./assets/screenshots/index.png">
+<img src="./assets/screenshots/upload.png">
 
 
 ### Atenção:warning:
@@ -74,7 +75,7 @@ a reunir todos os dados online e em tempo real.
 
 ### Desenvolvedor
 
-Renato Augusto
+Renato Augusto<br/>
 <img src="./assets/images/download.png" width="100">
 
 
