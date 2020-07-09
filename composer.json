@@ -1,0 +1,14 @@
+{
+    "name": "renato/oi-b2b",
+    "description": "Portal de indicadores OI-B2B",
+    "authors": [
+        {
+            "name": "Renato",
+            "email": "renatoaugusto.ads@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {"src\\": "src/"}
+    }
+}

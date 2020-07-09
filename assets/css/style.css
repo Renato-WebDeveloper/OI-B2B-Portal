@@ -1,0 +1,146 @@
+/*
+# Autor: Renato Augusto;
+# Este arquivo é de estilização manual do css
+# Este projeto contém outros arquivos de estilização
+# Afeta o index na arquitetura principal
+*/
+
+/*----------Div's principais----------*/
+
+.container-body {
+	background-color: #0277bd;
+}
+.main_container {
+	background-color: #0277bd;
+}
+.col-md-3.left_col {
+	background-color: #0277bd;
+}
+.left_col.scroll-view {
+	background-color: #0277bd;
+}
+.navbar.nav_title {
+	border:0;
+}
+
+/*----------Div's principais----------*/
+
+
+
+/*----------Logomarca a esquerda-----------*/
+
+.logo_left {
+	width: 45px;
+	height: 45px;
+	margin-top: 2px;
+}
+
+.logo_left_title {
+	font-size: 15px;
+	margin-left: 15px;
+}
+
+/*----------Logomarca a esquerda-----------*/
+
+
+
+/*----------Top Navigation-----------*/
+
+.title_head {
+	margin-left: 230px;
+	font-weight:bold;
+	font-size: 25px;
+	
+}
+
+.form-control.search {
+	width: 110px;
+}
+
+.btn.btn-secondary.search {
+	background-color: #0277bd;
+	color: white;
+}
+
+/*----------Top Navigation-----------*/
+
+
+/*----------Data / Hora-----------*/
+
+.horario {
+	font-weight: bold;
+	font-size: 16px;
+	margin-left: 285px;
+	padding: 6px;
+	position: absolute;
+}
+
+.data_hoje {
+	font-weight: bold;
+	font-size: 16px;
+	margin-left: 30px;
+	padding: 6px;
+	position: absolute;
+}
+
+
+/*----------Data / Hora-----------*/
+
+
+
+
+/*----------Data / Hora-----------*/
+
+.gif_chart{
+	width: 1160px;
+	height: 350px;
+	opacity:0.65;
+	-moz-opacity: 0.65;
+	filter: alpha(opacity=65);
+}
+
+/*----------Data / Hora-----------*/
+
+
+
+
+/*----------Responsividade-----------*/
+
+@media screen and (max-width:1300px){
+	.logomarca_topo {
+		display: none;
+	}
+
+	.title_head {
+		display: none;
+	}
+	.horario {
+		display: none;
+	}
+	.data_hoje {
+		display: none;
+	}
+
+	#gif_chart {
+		display: none;
+	}
+
+}
+
+/*----------Responsividade-----------*/
+
+
+
+/*----------upload_csv_report.php-----------*/
+
+#upload_csv_report {
+	border: dashed rgb(205, 201, 206);
+	height: 150px;
+
+}
+/*----------upload_csv_report.php-----------*/
+
+
+
+
+/*----------upload_csv_report.php-----------*/
