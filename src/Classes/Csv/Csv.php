@@ -34,7 +34,7 @@ class Csv
             tp_sred, tp_tave, tp_tria, tp_fibra, tp_trans, tp_cld, tp_eiad, tp_parc, tp_dg, tp_redea, 
             tp_slda, repetido, tp_pend_cli, prazo_real, tempo_bd_hs, dia_fechamento, ano_fechamento, 
             segmento_b2b, grupo_causa_raiz, u_f, geografia_2, diretoria, prazo_2, mes_2, tempo_bd_hs_2, 
-            tempo_pend, tempo_em_andamento, data_armazenamento 
+            tempo_pend, tempo_em_andamento, data_armazenamento)
             VALUES ('$row_data[0]','$row_data[1]','$row_data[2]','$row_data[3]','$row_data[4]', 
             '$row_data[5]','$row_data[6]','$row_data[7]','$row_data[8]','$row_data[9]','$row_data[10]', 
             '$row_data[11]','$row_data[12]','$row_data[13]','$row_data[14]','$row_data[15]',
