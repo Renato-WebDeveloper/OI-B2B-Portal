@@ -10,6 +10,7 @@ $meta = new Meta($pdo, $geography);
 $plan = new Plan($pdo, $geography);
 $cardOff = new CardOff($pdo, $geography);
 $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
+echo $cardOn->getProjection();
 ?>     
         <div class="tile_count shadow mb bg-write" style="background-color: #F8F8FF;">
         <div class="container-fluid">

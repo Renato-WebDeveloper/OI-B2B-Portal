@@ -71,6 +71,7 @@ class CardOnline
         } else {
            $resultR2 = 0;
         }
+        
     
         $sql = "SELECT count(*) as total_r1 FROM base_bd_corr 
         WHERE uf != 'MA' AND _cliente != 'BRASIL TELECOM COMUNICACAO MULTIMIDIA LTDA' 
@@ -213,6 +214,20 @@ class CardOnline
     public function getPercentOnTime()
     {
         return $this->percentOnTime;
+    }
+
+    public function getProjection() 
+    {
+        $month = date('m');
+        $year = date('Y');
+        $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+        $repairs = $this->getTotalRepairsFinallyR1AndR2();
+        $day = date('d');
+        $media = $repairs / $day;
+        $total = $media * $daysInMonth;
+        $result = ($total / $this->plan) * 100;
+        $result = substr($result, 0, 4);
+        return $result."%";
     }
 
 }
