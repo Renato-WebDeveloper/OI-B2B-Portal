@@ -34,7 +34,7 @@ class Csv
             tp_sred, tp_tave, tp_tria, tp_fibra, tp_trans, tp_cld, tp_eiad, tp_parc, tp_dg, tp_redea, 
             tp_slda, repetido, tp_pend_cli, prazo_real, tempo_bd_hs, dia_fechamento, ano_fechamento, 
             segmento_b2b, grupo_causa_raiz, u_f, geografia_2, diretoria, prazo_2, mes_2, tempo_bd_hs_2, 
-            tempo_pend, tempo_em_andamento) 
+            tempo_pend, tempo_em_andamento, data_armazenamento 
             VALUES ('$row_data[0]','$row_data[1]','$row_data[2]','$row_data[3]','$row_data[4]', 
             '$row_data[5]','$row_data[6]','$row_data[7]','$row_data[8]','$row_data[9]','$row_data[10]', 
             '$row_data[11]','$row_data[12]','$row_data[13]','$row_data[14]','$row_data[15]',
@@ -52,7 +52,7 @@ class Csv
             '$row_data[71]','$row_data[72]','$row_data[73]','$row_data[74]','$row_data[75]',
             '$row_data[76]','$row_data[77]','$row_data[78]','$row_data[79]','$row_data[80]',
             '$row_data[81]','$row_data[82]','$row_data[83]','$row_data[84]','$row_data[85]',
-            '$row_data[86]','$row_data[87]')";
+            '$row_data[86]','$row_data[87]', now())";
             $sql = $this->connMysql->prepare($sql);
             $sql->execute();           
         }
@@ -108,7 +108,7 @@ class Csv
             tempo_reparo, empresa_int_ponta_a, empresa_int_ponta_b, tipo_reclamacao, data_promessa_maxima, 
             uso_adsl, porta_adsl, no_prazo_maximo, modem, tipo_modem, numero_de_terminais, segmento, 
             repetido, no_column_name, no_column_name_2, ano_encerramento, segmento_b2b, grupo_causa_raiz, 
-            u_f, geografia, diretoria, no_prazo2, mes, reincidencia, tempo_bd_hs) 
+            u_f, geografia, diretoria, no_prazo2, mes, reincidencia, tempo_bd_hs, data_armazenamento) 
             VALUES ('$row_data[0]','$row_data[1]','$row_data[2]','$row_data[3]','$row_data[4]', 
             '$row_data[5]','$row_data[6]','$row_data[7]','$row_data[8]','$row_data[9]','$row_data[10]', 
             '$row_data[11]','$row_data[12]','$row_data[13]','$row_data[14]','$row_data[15]',
@@ -130,7 +130,7 @@ class Csv
             '$row_data[91]','$row_data[92]','$row_data[93]','$row_data[94]','$row_data[95]',
             '$row_data[96]','$row_data[97]','$row_data[98]','$row_data[99]','$row_data[100]',
             '$row_data[101]','$row_data[102]','$row_data[103]','$row_data[104]','$row_data[105]',
-            '$row_data[106]','$row_data[107]')";
+            '$row_data[106]','$row_data[107]', now())";
             $sql = $this->connMysql->prepare($sql);
             $sql->execute() or die(print_r($sql->errorInfo(), true));
         }

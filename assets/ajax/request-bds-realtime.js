@@ -112,7 +112,30 @@ setInterval(function ajax_bd_date_corr() {
         
         });
         
-        } , 60000);
+        } , 3000);
+
+
+setInterval(function ajax_sharepoing() {
+    var count;
+        $.ajax({
+        url: "../ajax_request/api-last-date-sharepoint.php",
+        type: "POST",
+        dataType: "html",
+        success: function(data) {
+            count = data;
+            document.getElementById("last-date-sharepoint").innerHTML = count;
+            },
+        
+        }).done(function(resposta) {
+        console.log(resposta);
+        
+        }).fail(function(jqXHR, textStatus ) {
+        console.log("Request failed: " + textStatus);
+                        
+        
+        });
+        
+        } , 3000);
 
 
 

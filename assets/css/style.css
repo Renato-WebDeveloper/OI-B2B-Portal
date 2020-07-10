@@ -141,6 +141,14 @@
 /*----------upload_csv_report.php-----------*/
 
 
+#count, #bd_corr, #bd_rep, #bd_ontime, #bd_on{
+	font-size: 33px;
+}
 
+#last-att{
+	font-size: 13px;
+}
 
-/*----------upload_csv_report.php-----------*/
+.body{
+	color:#44688f;
+}
