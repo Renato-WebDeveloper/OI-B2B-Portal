@@ -143,7 +143,8 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
               <span class="count_bottom"><i class="red"></i><strong>Tempo real <i class="fa fa-clock-o"></i></strong></span>
             </div>
 
-          </div>        
+          </div>    
+          <div class="text-center"><strong>Ultima atualização: <t id="last-date"></t></strong></div>
         </div>
     </div>
         

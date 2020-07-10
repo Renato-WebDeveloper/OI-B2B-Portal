@@ -91,3 +91,29 @@ setInterval(function ajax_bd_ontime() {
         
         } , 3000);
         
+
+setInterval(function ajax_bd_date_corr() {
+    var count;
+        $.ajax({
+        url: "../ajax_request/api-last-date-bdcorr.php",
+        type: "POST",
+        dataType: "html",
+        success: function(data) {
+            count = data;
+            document.getElementById("last-date").innerHTML = count;
+            },
+        
+        }).done(function(resposta) {
+        console.log(resposta);
+        
+        }).fail(function(jqXHR, textStatus ) {
+        console.log("Request failed: " + textStatus);
+                        
+        
+        });
+        
+        } , 60000);
+
+
+
+        
