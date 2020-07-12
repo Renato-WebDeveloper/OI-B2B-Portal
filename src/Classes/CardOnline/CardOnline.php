@@ -71,6 +71,18 @@ class CardOnline
         } else {
            $resultR2 = 0;
         }
+
+        $sql = "SELECT count(*) as total_vult FROM base_reparos_r1 WHERE geografia_2 = 'GRJ'
+        AND segmento_b2b IN ('CORPORATIVO', 'ATACADO', 'PROJETO ESCOLA', 'EMPRESARIAL') AND mes = '$month_r2'
+        AND ano_fechamento = '$year' AND u_f = 'RJ' AND uf != 'RJ'";
+        $sql = $this->connMysql->prepare($sql);
+        $sql->execute() or die(print_r($sql->errorInfo(), true));
+        if($sql->rowCount()>0){
+            $row = $sql->fetch();
+            $vult = $row['total_vult'];
+        } else {
+            $vult = 0;
+        }
         
     
         $sql = "SELECT count(*) as total_r1 FROM base_bd_corr 
@@ -80,7 +92,7 @@ class CardOnline
         $sql->execute();
         if ($sql->rowCount()>0) {
             $result = $sql->fetch();
-            $this->totalRepairsFinallyR1AndR2 = $result['total_r1'] + $resultR2['total_r2'];
+            $this->totalRepairsFinallyR1AndR2 = $result['total_r1'] + $resultR2['total_r2'] + $vult;
         } else {
             $this->totalRepairsFinallyR1AndR2 = 0;
         }
@@ -116,6 +128,18 @@ class CardOnline
            $resultR2 = 0;
         }
 
+        $sql = "SELECT count(*) as total_vult_repeated FROM base_reparos_r1 WHERE geografia_2 = 'GRJ'
+        AND segmento_b2b IN ('CORPORATIVO', 'ATACADO', 'EMPRESARIAL', 'PROJETO ESCOLA') AND mes = '$month_r2' 
+        AND ano_fechamento = '$year' AND repetido = 'S' AND u_f = 'RJ' AND uf != 'RJ'";
+        $sql = $this->connMysql->prepare($sql);
+        $sql->execute() or die(print_r($sql->errorInfo(), true));
+        if($sql->rowCount()>0){
+            $row = $sql->fetch();
+            $vultRepeated = $row['total_vult_repeated'];
+        } else {
+            $vultRepeated = 0;
+        }
+
         $sql = "SELECT count(*) as total_r1 FROM base_bd_corr 
         WHERE uf != 'MA' AND _cliente != 'BRASIL TELECOM COMUNICACAO MULTIMIDIA LTDA' 
         AND _cliente != 'TELEMAR NORTE LESTE SA EM RECUPERACAO JUDICIAL' AND _cliente != 'OI MOVEL SA EM RECUPERACAO JUDICIAL' AND fechamento >= '$date' AND _reinc_30 = 'S'"; //verificar depois a OI TELECOM PRA REMOVER
@@ -123,7 +147,7 @@ class CardOnline
         $sql->execute();
         if ($sql->rowCount()>0) {
             $result = $sql->fetch();
-            $this->totalRepairsRepeated = $result['total_r1'] + $resultR2['total_r2'];
+            $this->totalRepairsRepeated = $result['total_r1'] + $resultR2['total_r2'] + $vultRepeated;
         } else {
              $this->totalRepairsRepeated = 0;
         }
@@ -159,6 +183,18 @@ class CardOnline
            $resultR2 = 0;
         }
 
+        $sql = "SELECT count(*) as total_vult_ontime FROM base_reparos_r1 WHERE geografia_2 = 'GRJ'
+        AND segmento_b2b IN ('CORPORATIVO', 'ATACADO', 'EMPRESARIAL', 'PROJETO ESCOLA') AND mes = '$month_r2' 
+        AND ano_fechamento = '$year' AND prazo = '1' AND u_f = 'RJ' AND uf != 'RJ'";
+        $sql = $this->connMysql->prepare($sql);
+        $sql->execute() or die(print_r($sql->errorInfo(), true));
+        if($sql->rowCount()>0){
+            $row = $sql->fetch();
+            $vultOnTime = $row['total_vult_ontime'];
+        } else {
+            $vultOnTime = 0;
+        }
+
         $sql = "SELECT count(*) as total_r1 FROM base_bd_corr 
         WHERE uf != 'MA' AND _cliente != 'BRASIL TELECOM COMUNICACAO MULTIMIDIA LTDA' 
         AND _cliente != 'TELEMAR NORTE LESTE SA EM RECUPERACAO JUDICIAL' AND _cliente != 'OI MOVEL SA EM RECUPERACAO JUDICIAL' AND fechamento >= '$date' AND igq = 'Dentro'"; //verificar depois a OI TELECOM PRA REMOVER
@@ -166,7 +202,7 @@ class CardOnline
         $sql->execute();
         if ($sql->rowCount()>0) {
             $result = $sql->fetch();
-            $this->totalRepairsOnTime = $result['total_r1'] + $resultR2['total_r2'];
+            $this->totalRepairsOnTime = $result['total_r1'] + $resultR2['total_r2'] + $vultOnTime;
         } else {
             $this->totalRepairsOnTine = 0;
         }
@@ -221,7 +257,7 @@ class CardOnline
         $month = date('m');
         $year = date('Y');
         $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
-        $repairs = $this->getTotalRepairsFinallyR1AndR2();
+        $repairs = $this->totalRepairsFinallyR1AndR2;
         $day = date('d');
         $media = $repairs / $day;
         $total = $media * $daysInMonth;

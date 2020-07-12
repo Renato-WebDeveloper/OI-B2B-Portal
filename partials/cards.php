@@ -10,7 +10,7 @@ $meta = new Meta($pdo, $geography);
 $plan = new Plan($pdo, $geography);
 $cardOff = new CardOff($pdo, $geography);
 $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
-echo $cardOn->getProjection();
+
 ?>     
         <div class="tile_count shadow mb bg-write" style="background-color: #F8F8FF;">
         <div class="container-fluid">
@@ -80,7 +80,11 @@ echo $cardOn->getProjection();
               </div>
     
             </div>
-            <div class="text-center" id="last-att"><strong>Ultima atualização: <t id="last-date-sharepoint"></t></strong></div>
+
+              <div class="text-center" id="last-att">
+                <strong>Ultima atualização: <t id="last-date-sharepoint"></t></strong>
+              </div>
+
           </div>
         </div>
 
@@ -144,8 +148,10 @@ echo $cardOn->getProjection();
               <div class="count" id="bd_on"><?= $cardOn->getTotalRepairsOnline(); ?></div>
               <span class="count_bottom"><i class="red"></i><strong>Tempo real <i class="fa fa-clock-o"></i></strong></span>
             </div>
+            
 
           </div>    
+
           <div class="text-center" id="last-att"><strong>Ultima atualização: <t id="last-date"></t></strong></div>
         </div>
     </div>

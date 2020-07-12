@@ -19,7 +19,19 @@ $sql->execute();
 if ($sql->rowCount()>0) {
     $result_r2 = $sql->fetch();
 } else {
-    echo "...";
+    $result_r2 = 0;
+}
+
+$sql = "SELECT count(*) as total_vult_repeated FROM base_reparos_r1 WHERE geografia_2 = 'GRJ'
+AND segmento_b2b IN ('CORPORATIVO', 'ATACADO', 'EMPRESARIAL', 'PROJETO ESCOLA') AND mes = '$month_r2' 
+AND ano_fechamento = '$year' AND repetido = 'S' AND u_f = 'RJ' AND uf != 'RJ'";
+$sql = $pdo->prepare($sql);
+$sql->execute() or die(print_r($sql->errorInfo(), true));
+if($sql->rowCount()>0){
+    $row = $sql->fetch();
+    $vultRepeated = $row['total_vult_repeated'];
+} else {
+    $vultRepeated = 0;
 }
 
 $sql = "SELECT count(*) as total_r1 FROM base_bd_corr 
@@ -29,10 +41,11 @@ $sql = $pdo->prepare($sql);
 $sql->execute();
 if ($sql->rowCount()>0) {
     $result = $sql->fetch();
-    $total =  $result['total_r1'] + $result_r2['total_r2'];
+    $total =  $result['total_r1'] + $result_r2['total_r2'] + $vultRepeated;
     echo $total;
 } else {
-    echo "...";
+    $total = 0;
+    echo $total;
 }
         
 ?>
