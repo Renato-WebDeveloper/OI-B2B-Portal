@@ -1,12 +1,13 @@
 <?php
 
+ini_set('memory_limit', '1024M');
 require_once "../connect_db/config.php";
 
 require_once "../connect_db/config_pgsql.php";
 
-$sql = "DELETE FROM base_bdON";
-$sql = $pdo->prepare($sql);
-$sql->execute();
+$sqlD = "DELETE FROM base_bdON";
+$sqlD = $pdo->prepare($sqlD);
+$sqlD->execute();
 
 $sql = "SELECT * FROM (SELECT (CASE WHEN v4.dthr_entrada_ultima_tramita>v3.promessa THEN 'Não é reaprazável. O prazo desse circuito foi perdido.' 
 ELSE 'Circuito Reaprazavel' END) AS reaprazavel, (CASE WHEN (dthr_entrada_ultima_tramita<=promessa) THEN (promessa-dthr_entrada_ultima_tramita)::text 

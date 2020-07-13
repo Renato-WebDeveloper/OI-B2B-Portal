@@ -25,8 +25,7 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
                   <strong><span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><?= $cardOff->getTotalRepairsPercent() ?> </i>Percentual</span></strong>
                 <?php else: ?>
                   <strong><span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i><?= $cardOff->getTotalRepairsPercent() ?> </i>Percentual</span></strong>
-                <?php endif; ?>
-                <br/>
+                <?php endif; ?><br/>
                 <span class="count_bottom"><i class="fa fa-check-circle-o" ></i><strong> <?= $meta->getEntryMeta(); ?></strong> - Meta</span>
               </div>
 
@@ -94,49 +93,48 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
                 <strong>Acompanhamento em tempo real</strong>
             </div>
             <div class="row">
-            
-            <?php if($cardOn->getTotalPercentFinally() > $meta->getEntryMeta()): ?>
+
             <div class="col-md-3 col-sm-4 tile_stats_count">
-              <span class="count_top bg red"><i class="fa fa-warning"></i> Reparos encerrados (Atual)</span>
+              <span class="count_top bg"><i class="fa fa-warning"></i> Reparos encerrados (Atual)</span>
+            <?php if($cardOn->getTotalPercentFinally() > $meta->getEntryMeta()): ?>
               <div class="count" id="bd_corr"><?= $cardOn->getTotalRepairsFinallyR1AndR2() ?></div>
-              <strong><span class="count_bottom"><i class="red"><?= $cardOn->getTotalPercentFinally() ?></i> Percentual</span></strong><br/>
-              <span class="count_bottom"><i class="fa fa-check-circle-o" ></i><strong> <?= $meta->getEntryMeta(); ?></strong> - Meta</span>
+              <strong><span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"><?= $cardOn->getTotalPercentFinally() ?></i> Percentual</span></strong><br/>
             </div>
             <?php else: ?>
-            <div class="col-md-3 col-sm-4 tile_stats_count">
-              <span class="count_top bg green"><i class="fa fa-warning"></i> Reparos encerrados (Atual)</span>
               <div class="count" id="bd_corr"><?= $cardOn->getTotalRepairsFinallyR1AndR2()  ?></div>
-              <strong><span class="count_bottom"><i class="green"><?= $cardOn->getTotalPercentFinally() ?></i> Percentual</span></strong><br/>
-              <span class="count_bottom"><i class="fa fa-check-circle-o" ></i><strong> <?= $meta->getEntryMeta(); ?></strong> - Meta</span>
-            </div>
+              <strong><span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><?= $cardOn->getTotalPercentFinally() ?></i> Percentual</span></strong><br/>
             <?php endif; ?>
+            <?php if($cardOn->getProjection() < $meta->getEntryMeta()): ?>
+              <strong><span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><?= $cardOn->getProjection() ?> </i>Projeção</span></strong>
+            <?php else: ?>
+              <strong><span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i><?= $cardOn->getProjection() ?> </i>Projeção</span></strong>
+            <?php endif; ?>
+            <br/>
+            <span class="count_bottom"><i class="fa fa-check-circle-o" ></i><strong> <?= $meta->getEntryMeta(); ?></strong> - Meta</span>
+            </div>
 
-            <?php if($cardOn->getPercentRepeated() > $meta->getRepeatedMeta()): ?>
             <div class="col-md-3 col-sm-4  tile_stats_count">
-              <span class="count_top bg red"><i class="fa fa-warning"></i> Repetidos</span>
+              <span class="count_top bg"><i class="fa fa-warning"></i> Repetidos</span>
+            <?php if($cardOn->getPercentRepeated() > $meta->getRepeatedMeta()): ?>
               <div class="count" id="bd_rep"><?= $cardOn->getTotalRepairsRepeated() ?></div>
               <strong><span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i><?= $cardOn->getPercentRepeated() ?></i> Percentual</span></strong><br/>
-              <span class="count_bottom"><i class="fa fa-check-circle-o" ></i><strong> <?= $meta->getRepeatedMeta(); ?></strong> - Meta</span>
+              <span class="count_bottom"><i class="fa fa-check-circle-o"></i><strong> <?= $meta->getRepeatedMeta(); ?></strong> - Meta</span>
             </div>
             <?php else: ?>
-            <div class="col-md-3 col-sm-4  tile_stats_count">
-              <span class="count_top bg green"><i class="fa fa-warning"></i> Repetidos</span>
               <div class="count" id="bd_rep"><?= $cardOn->getTotalRepairsRepeated() ?></div>
               <strong><span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><?= $cardOn->getPercentRepeated() ?></i> Percentual</span></strong><br/>
-              <span class="count_bottom"><i class="fa fa-check-circle-o" ></i><strong> <?= $meta->getRepeatedMeta(); ?></strong> - Meta</span>
+              <span class="count_bottom"><i class="fa fa-check-circle-o"></i><strong> <?= $meta->getRepeatedMeta(); ?></strong> - Meta</span>
             </div>
             <?php endif; ?>
 
-            <?php if($cardOn->getPercentOnTime() < $meta->getOnTimeMeta()): ?>
             <div class="col-md-3 col-sm-4  tile_stats_count">
-              <span class="count_top bg red"><i class="fa fa-check-square-o"></i> No prazo</span>
+              <span class="count_top bg "><i class="fa fa-check-square-o"></i> No prazo</span>
+            <?php if($cardOn->getPercentOnTime() < $meta->getOnTimeMeta()): ?>
               <div class="count" id="bd_ontime"><?= $cardOn->getTotalRepairsOnTime() ?></div>
               <strong><span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i><?= $cardOn->getPercentOnTime() ?></i> Percentual </span></strong><br/>
               <span class="count_bottom"><i class="fa fa-check-circle-o" ></i><strong> <?= $meta->getOnTimeMeta(); ?></strong> - Meta</span>
             </div>
             <?php else: ?>
-            <div class="col-md-3 col-sm-4  tile_stats_count">
-              <span class="count_top bg green"><i class="fa fa-check-square-o"></i> No prazo</span>
               <div class="count" id="bd_ontime"><?= $cardOn->getTotalRepairsOnTime() ?></div>
               <strong><span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><?= $cardOn->getPercentOnTime() ?></i> Percentual </span></strong><br/>
               <span class="count_bottom"><i class="fa fa-check-circle-o" ></i><strong> <?= $meta->getOnTimeMeta(); ?></strong> - Meta</span>

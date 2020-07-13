@@ -262,7 +262,7 @@ class CardOnline
         $media = $repairs / $day;
         $total = $media * $daysInMonth;
         $result = ($total / $this->plan) * 100;
-        $result = substr($result, 0, 4);
+        $result = substr($result, 0, 5);
         return $result."%";
     }
 
