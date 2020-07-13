@@ -153,6 +153,12 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
           <div class="text-center" id="last-att"><strong>Ultima atualização: <t id="last-date"></t></strong></div>
         </div>
     </div>
+
+    <script>
+      setTimeout(function() {
+      location.reload();
+      }, 600000);
+    </script>
         
 
 
