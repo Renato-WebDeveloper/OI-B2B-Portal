@@ -19,7 +19,7 @@ var result;
 
     });
 
-    } , 3000);
+    } , 1000);
 
 
 setInterval(function ajax_bdcorr() {
@@ -112,7 +112,7 @@ setInterval(function ajax_bd_date_corr() {
         
         });
         
-        } , 3000);
+        } , 400);
 
 
 setInterval(function ajax_sharepoing() {
@@ -135,7 +135,7 @@ setInterval(function ajax_sharepoing() {
         
         });
         
-        } , 3000);
+        } , 400);
 
 
 

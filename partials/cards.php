@@ -11,12 +11,13 @@ $plan = new Plan($pdo, $geography);
 $cardOff = new CardOff($pdo, $geography);
 $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
 
+
 ?>     
         <div class="tile_count shadow mb bg-write" style="background-color: #F8F8FF;">
         <div class="container-fluid">
-            <div class="text-center" id="last-att">
-               <strong>Consolidado matriz</strong> 
-            </div>
+            <div class="text-left" id="last-att">
+               <strong style="color:black;">Consolidado matriz</strong> - <strong id="last-att">Atualizado em: <t id="last-date-sharepoint"></t></strong>
+            </div><br/>
             <div class="row">
               <div class="col-md-2 col-sm-4  tile_stats_count">
                 <span class="count_top"><i class="fa fa-sign-in"></i> Total de entradas</span>
@@ -80,18 +81,14 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
     
             </div>
 
-              <div class="text-center" id="last-att">
-                <strong>Ultima atualização: <t id="last-date-sharepoint"></t></strong>
-              </div>
-
           </div>
         </div>
 
         <div class="tile_count shadow mb  bg-write" style="background-color: #F8F8FF;">
         <div class="container-fluid">
-            <div class="text-center" id="last-att">
-                <strong>Acompanhamento em tempo real</strong>
-            </div>
+            <div class="text-left" id="last-att">
+                <strong style="color:black;">Reparos online</strong> - <strong id="last-att">Ultima atualização: <t id="last-date"></t></strong>
+            </div><br/>
             <div class="row">
 
             <div class="col-md-3 col-sm-4 tile_stats_count">
@@ -149,8 +146,6 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
             
 
           </div>    
-
-          <div class="text-center" id="last-att"><strong>Ultima atualização: <t id="last-date"></t></strong></div>
         </div>
     </div>
 
