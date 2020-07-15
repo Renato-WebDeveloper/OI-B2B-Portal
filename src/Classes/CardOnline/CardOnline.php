@@ -2,6 +2,8 @@
 
 namespace src\Classes\CardOnline;
 
+use DateTime;
+
 class CardOnline 
 {
 
@@ -264,6 +266,57 @@ class CardOnline
         $result = ($total / $this->plan) * 100;
         $result = substr($result, 0, 5);
         return $result."%";
+    }
+
+    public function getProjectionV2()
+    {
+        $month = date('m');
+        $year = date('Y');
+        $day = date('d');
+        $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+        $wheithMonth = 0;
+        for ($days=1; $days<=$daysInMonth; $days++) {
+            $date = new DateTime();
+            $date->setDate($year, $month, $days);
+            //$day = $date->format('d');
+            $dayWeek = $date->format('N');
+            if ($dayWeek > 6) {
+                //echo $dayWeek."domingo<br/>";
+                $wheithMonth = $wheithMonth + 0.25;
+            } elseif($dayWeek == 6) {
+                //echo $dayWeek."é sábado<br/>";
+                $wheithMonth = $wheithMonth + 0.5;
+            } elseif($dayWeek < 6) {
+                //echo $dayWeek."é dia de semana<br/>;
+                $wheithMonth = $wheithMonth + 1;
+            }
+        }
+        //echo $wheithMonth;
+        $weigthOnline =0;
+        for ($days=1; $days <= $day ; $days++) { 
+            $date = new DateTime();
+            $date->setDate($year, $month, $days);
+            $dayWeek = $date->format('N');
+            if ($dayWeek > 6) {
+                //echo $dayWeek."domingo<br/>";
+                $weigthOnline = $weigthOnline + 0.25;
+            } elseif($dayWeek == 6) {
+                //echo $dayWeek."é sábado<br/>";
+                $weigthOnline = $weigthOnline + 0.5;
+            } elseif($dayWeek < 6) {
+                //echo $dayWeek."é dia de semana<br/>;
+                $weigthOnline = $weigthOnline + 1;
+            }
+        }
+        //echo $weigthOnline;
+
+        $repairs = $this->totalRepairsFinallyR1AndR2;
+        $media = $repairs / $weigthOnline;
+        $total = $media * $wheithMonth;
+        $projection = ($total / $this->plan) * 100;
+        $projection = substr($projection, 0,5);
+        return $projection."%";
+        
     }
 
 }

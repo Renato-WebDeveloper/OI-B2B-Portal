@@ -101,10 +101,10 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
               <div class="count" id="bd_corr"><?= $cardOn->getTotalRepairsFinallyR1AndR2()  ?></div>
               <strong><span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><?= $cardOn->getTotalPercentFinally() ?></i> Percentual</span></strong><br/>
             <?php endif; ?>
-            <?php if($cardOn->getProjection() < $meta->getEntryMeta()): ?>
-              <strong><span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><?= $cardOn->getProjection() ?> </i>Projeção</span></strong>
+            <?php if($cardOn->getProjectionV2() < $meta->getEntryMeta()): ?>
+              <strong><span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><?= $cardOn->getProjectionV2() ?> </i>Projeção</span></strong>
             <?php else: ?>
-              <strong><span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i><?= $cardOn->getProjection() ?> </i>Projeção</span></strong>
+              <strong><span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i><?= $cardOn->getProjectionV2() ?> </i>Projeção</span></strong>
             <?php endif; ?>
             <br/>
             <span class="count_bottom"><i class="fa fa-check-circle-o" ></i><strong> <?= $meta->getEntryMeta(); ?></strong> - Meta</span>
