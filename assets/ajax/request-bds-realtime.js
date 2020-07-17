@@ -137,6 +137,29 @@ setInterval(function ajax_sharepoing() {
         
         } , 400);
 
+setInterval(function ajax_bdcorr_now() {
+    var count;
+        $.ajax({
+        url: "../ajax_request/api-bdcorr-now.php",
+        type: "POST",
+        dataType: "html",
+        success: function(data) {
+            count = data;
+            document.getElementById("bdcorr_now").innerHTML = count;
+            },
+        
+        }).done(function(resposta) {
+        console.log(resposta);
+        
+        }).fail(function(jqXHR, textStatus ) {
+        console.log("Request failed: " + textStatus);
+                        
+        
+        });
+        
+        } , 400);
+
+
 
 
         

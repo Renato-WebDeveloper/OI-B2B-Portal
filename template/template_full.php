@@ -63,7 +63,7 @@ if(empty($_SESSION['id']) && !isset($_SESSION['id'])) {
 
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="../assets/images/user.png" alt="..." class="img-circle profile_img">
+                <img src="../assets/images/user2.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Bem vindo,</span>

@@ -11,7 +11,7 @@ $plan = new Plan($pdo, $geography);
 $cardOff = new CardOff($pdo, $geography);
 $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
 
-
+//echo $cardOn->testBdCorrNow();
 ?>     
         <div class="tile_count shadow mb bg-write" style="background-color: #F8F8FF;">
         <div class="container-fluid">
@@ -90,15 +90,15 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
                 <strong style="color:black;">Reparos online</strong> - <strong id="last-att">Ultima atualização: <t id="last-date"></t></strong>
             </div><br/>
             <div class="row">
-
+                  
             <div class="col-md-3 col-sm-4 tile_stats_count">
               <span class="count_top bg"><i class="fa fa-warning"></i> Reparos encerrados (Atual)</span>
+              <div class="count" id="bd_corr"><?= $cardOn->getTotalRepairsFinallyR1AndR2()?></div>
+              <strong><span class="count_bottom" id="bdcorr_now"><?= $cardOn->testBdCorrNow() ?> </span> - Encerrados hoje</strong><br/>
             <?php if($cardOn->getTotalPercentFinally() > $meta->getEntryMeta()): ?>
-              <div class="count" id="bd_corr"><?= $cardOn->getTotalRepairsFinallyR1AndR2() ?></div>
               <strong><span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"><?= $cardOn->getTotalPercentFinally() ?></i> Percentual</span></strong><br/>
             </div>
             <?php else: ?>
-              <div class="count" id="bd_corr"><?= $cardOn->getTotalRepairsFinallyR1AndR2()  ?></div>
               <strong><span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><?= $cardOn->getTotalPercentFinally() ?></i> Percentual</span></strong><br/>
             <?php endif; ?>
             <?php if($cardOn->getProjectionV2() < $meta->getEntryMeta()): ?>
