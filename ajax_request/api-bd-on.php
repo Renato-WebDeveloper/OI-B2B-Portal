@@ -9,6 +9,7 @@ if ($sql->rowCount()>0) {
    $result = $sql->fetch();
    echo $result['total'];
 } else {
-   echo "...";
+   $result = 0;
+   echo $result;
 }
 ?>

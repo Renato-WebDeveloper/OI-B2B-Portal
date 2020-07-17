@@ -13,5 +13,5 @@ const interval = setInterval(() => {
 	const dataHora =  zeroFill(now.getHours()) + ':' + zeroFill(now.getMinutes()) + ':' + zeroFill(now.getSeconds());
 
 	// Exibe na tela usando a div#data-hora
-	document.getElementById('data-hora').innerHTML = dataHora;
+	//document.getElementById('data-hora').innerHTML = dataHora;
 }, 1000);
