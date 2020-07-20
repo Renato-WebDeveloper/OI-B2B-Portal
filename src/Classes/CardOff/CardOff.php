@@ -87,8 +87,13 @@ class CardOff
         AND ano_fechamento = '$this->year' ";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
-        $row = $sql->fetch();
-        $this->totalRepairsR1 = $row['total_repairs_r1'];
+        
+        if ($sql->rowCount()>0) {
+            $row = $sql->fetch();
+            $this->totalRepairsR1 = $row['total_repairs_r1'];
+        } else {
+            $this->totalRepairsR1 = 0;
+        }
     }
 
     private function setTotalRepairsR2() 
@@ -98,8 +103,15 @@ class CardOff
         AND ano_encerramento = '$this->year' ";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
-        $row = $sql->fetch();
-        $this->totalRepairsR2 = $row['total_repairs_r2'];
+
+        if ($sql->rowCount()>0) {
+            $row = $sql->fetch();
+            $this->totalRepairsR2 = $row['total_repairs_r2'];
+        } else {
+            $this->totalRepairsR2 = 0;
+        }
+
+
     }
 
     private function setTotalRepairs() 
@@ -113,12 +125,17 @@ class CardOff
         AND indicador = 'Planta-(Tudo)' AND mes = '$this->month' AND ano = '$this->year'";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
-        $plan = $sql->fetch();
-        $plan = $plan['valor'];
-        $total = $this->totalRepairs / $plan;
-        $total = $total * 100;
-        $total = substr($total, 0, 5)."%";
-        $this->totalRepairsPercent = $total;
+        if ($sql->rowCount()>0) {
+            $plan = $sql->fetch();
+            $plan = $plan['valor'];
+            $total = $this->totalRepairs / $plan;
+            $total = $total * 100;
+            $total = substr($total, 0, 5)."%";
+            $this->totalRepairsPercent = $total;
+        } else {
+            $this->totalRepeatedPercent = 0;
+        }
+
     }
 
     public function getTotalRepairs()
@@ -140,8 +157,15 @@ class CardOff
         AND ano_fechamento = '$this->year' AND repetido = 'S'";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
-        $row = $sql->fetch();
-        $this->totalRepeatedR1 = $row['total_repeated_r1'];
+
+        if ($sql->rowCount()>0 ) {
+            $row = $sql->fetch();
+            $this->totalRepeatedR1 = $row['total_repeated_r1'];
+        } else {
+            $this->totalRepeatedR1 = 0;
+        }
+
+
     }
 
     private function setTotalRepeatedR2() 
@@ -151,8 +175,15 @@ class CardOff
         AND ano_encerramento = '$this->year' AND repetido = 'S'";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
-        $row = $sql->fetch();
-        $this->totalRepeatedR2 = $row['total_repeated_r2'];
+
+        if ($sql->rowCOunt()>0) {
+            $row = $sql->fetch();
+            $this->totalRepeatedR2 = $row['total_repeated_r2'];
+        } else {
+            $this->totalRepeatedR2 = 0;
+        }
+
+
     }
 
     private function setTotalRepeated() 
@@ -186,8 +217,15 @@ class CardOff
         AND ano_fechamento = '$this->year' AND prazo = '1'";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
-        $row = $sql->fetch();
-        $this->totalOnTimeR1 = $row['total_on_time_r1'];
+        
+        if ($sql->rowCount() > 0) {
+            $row = $sql->fetch();
+            $this->totalOnTimeR1 = $row['total_on_time_r1'];
+        } else {
+            $this->totalOnTimeR1 = 0;
+        }
+
+
     }
 
     public function setTotalOnTimeR2() 
@@ -197,8 +235,15 @@ class CardOff
         AND ano_encerramento = '$this->year' AND no_prazo = 'S'";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
-        $row = $sql->fetch();
-        $this->totalOnTimeR2 = $row['total_on_time_r2'];
+
+        if ($sql->rowCount()>0) {
+            $row = $sql->fetch();
+            $this->totalOnTimeR2 = $row['total_on_time_r2'];
+        } else {
+            $this->totalOnTimeR2 = 0;
+        }
+
+
 
     }
 
@@ -232,8 +277,15 @@ class CardOff
         AND segmento_b2b IN ('CORPORATIVO', 'ATACADO', 'EMPRESARIAL', 'PROJETO ESCOLA') AND mes = '$this->month' AND ano_fechamento = '$this->year'";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
-        $row = $sql->fetch();
-        $this->totalTmrR1 = $row['total_tmr_r1'];
+
+        if ($sql->rowCount() > 0) {
+            $row = $sql->fetch();
+            $this->totalTmrR1 = $row['total_tmr_r1'];
+        } else {
+            $this->totalTmrR1 = 0;
+        }
+
+
     }
 
     private function setTotalTmrR2() 
@@ -242,8 +294,15 @@ class CardOff
         AND segmento_b2b IN ('CORPORATIVO', 'ATACADO', 'EMPRESARIAL', 'PROJETO ESCOLA') AND mes = '$this->month' AND ano_encerramento = '$this->year'";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
-        $row = $sql->fetch();
-        $this->totalTmrR2 = $row['total_tmr_r2'];
+
+        if ($sql->rowCount()>0) {
+            $row = $sql->fetch();
+            $this->totalTmrR2 = $row['total_tmr_r2'];
+        } else {
+            $this->totalTmrR2 = 0;
+        }
+
+
     }
 
     private function setTotalTmr() 
@@ -277,16 +336,30 @@ class CardOff
         AND ano_fechamento = '$this->year' AND grupo_causa_raiz = 'ENCONTRADO OK'";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
-        $row = $sql->fetch();
-        $resultR1 = $row['total_found_ok_r1'];
+
+        if ($sql->rowCount()>0) {
+            $row = $sql->fetch();
+            $resultR1 = $row['total_found_ok_r1'];
+        } else {
+            $resultR1 = 0;
+        }
+
+
 
         $sql = "SELECT count(*) as total_found_ok_r2 FROM base_reparos_r2
         WHERE geografia = '$this->geography' AND segmento_b2b IN ('CORPORATIVO', 'ATACADO', 'EMPRESARIAL', 'PROJETO ESCOLA') AND mes = '$this->month'
         AND ano_encerramento = '$this->year' AND grupo_causa_raiz = 'ENCONTRADO OK'";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
-        $row = $sql->fetch();
-        $resultR2 = $row['total_found_ok_r2'];
+
+        if ($sql->rowCount()>0) {
+            $row = $sql->fetch();
+            $resultR2 = $row['total_found_ok_r2'];
+        } else {
+            $resultR2 = 0;
+        }
+
+
 
         $foundOk = $resultR1 + $resultR2;
 
@@ -295,16 +368,30 @@ class CardOff
         AND ano_fechamento = '$this->year' AND grupo_causa_raiz = 'EVENTO DE VULTO'";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
-        $row = $sql->fetch();
-        $resultR1 = $row['total_vulto_event_r1'];
+
+        if ($sql->rowCount()> 0) {
+            $row = $sql->fetch();
+            $resultR1 = $row['total_vulto_event_r1'];
+        } else {
+            $resultR1 = 0;
+        }
+
+
 
         $sql = "SELECT count(*) as total_vulto_event_r2 FROM base_reparos_r2
         WHERE geografia = '$this->geography' AND segmento_b2b IN ('CORPORATIVO', 'ATACADO', 'EMPRESARIAL', 'PROJETO ESCOLA') AND mes = '$this->month'
         AND ano_encerramento = '$this->year' AND grupo_causa_raiz = 'EVENTO DE VULTO'";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
-        $row = $sql->fetch();
-        $resultR2 = $row['total_vulto_event_r2'];
+
+        if ($sql->rowCount()>0) {
+            $row = $sql->fetch();
+            $resultR2 = $row['total_vulto_event_r2'];
+        } else {
+            $resultR2 = 0;
+        }
+
+
 
         $vultoEvent = $resultR1 + $resultR2;
 
@@ -313,16 +400,29 @@ class CardOff
         AND ano_fechamento = '$this->year' AND grupo_causa_raiz = 'REDE OPTICA'";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
-        $row = $sql->fetch();
-        $resultR1 = $row['total_optical_network_r1'];
+
+        if ($sql->rowCount() >0) {
+            $row = $sql->fetch();
+            $resultR1 = $row['total_optical_network_r1'];
+        } else {
+            $resultR1 = 0;
+        }
+
+
 
         $sql = "SELECT count(*) as total_optical_network_r2 FROM base_reparos_r2
         WHERE geografia = '$this->geography' AND segmento_b2b IN ('CORPORATIVO', 'ATACADO', 'EMPRESARIAL', 'PROJETO ESCOLA') AND mes = '$this->month'
         AND ano_encerramento = '$this->year' AND grupo_causa_raiz = 'REDE OPTICA'";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
-        $row = $sql->fetch();
-        $resultR2 = $row['total_optical_network_r2'];
+
+        if ($sql->rowCount()>0) {
+            $row = $sql->fetch();
+            $resultR2 = $row['total_optical_network_r2'];
+        } else {
+            $resultR2 = 0;
+        }
+
 
         $opticalNetwork = $resultR1 + $resultR2;
 
