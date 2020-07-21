@@ -36,7 +36,7 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
                 <?php if ($meta->getRepeatedMeta() > $cardOff->getTotalRepeatedPercent()): ?>
                   <strong><span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><?= $cardOff->getTotalRepeatedPercent() ?></i> Percentual</span></strong>
                 <?php else: ?>
-                  <strong><span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i><?= $cardOff->$cardOff->getTotalRepeatedPercent() ?></i> Percentual</span></strong>
+                  <strong><span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i><?= $cardOff->getTotalRepeatedPercent() ?></i> Percentual</span></strong>
                 <?php endif; ?>
                 <br/>
                 <span class="count_bottom"><i class="fa fa-check-circle-o" ></i><strong> <?= $meta->getRepeatedMeta(); ?></strong> - Meta</span>
