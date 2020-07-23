@@ -1,4 +1,5 @@
 <?php session_start();
+header("location: 403.html");
 require "../vendor/autoload.php";
 require "../connect_db/config.php";
 
