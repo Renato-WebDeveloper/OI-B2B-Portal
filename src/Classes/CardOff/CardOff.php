@@ -244,7 +244,6 @@ class CardOff
         }
 
 
-
     }
 
     public function setTotalOnTime() 
