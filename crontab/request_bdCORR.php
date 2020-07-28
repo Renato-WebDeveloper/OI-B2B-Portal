@@ -94,7 +94,7 @@ require "../connect_db/config.php";
     $sql = $pdo->prepare($sql);
     $sql->execute();
     if ($sql->rowCount()==0) {
-        $sql = "INSERT INTO base_bd_corr (protocolo,local,acesso,_cliente,servico,produto,uf,gra,_reinc_30,cod_encer,uf_posto,posto,gra_posto,abertura,
+        $sql = "INSERT INTO base_bd_corr (protocolo,local,acesso,_cliente,servico,produto,uf,gra_,_reinc_30,cod_encer,uf_posto,posto,gra_posto,abertura,
         promessa,aprazamento,fechamento,igq,_velocidade,segm,estacao) VALUES ('$protocolo','$local','$acesso','$_cliente','$servico','$produto','$uf',
         '$gra','$_reinc_30','$cod_encer','$uf_posto','$posto','$gra_posto','$abertura','$promessa','$aprazamento','$data_fechamento','$igq','$_velocidade',
         '$segm','$estacao')";
