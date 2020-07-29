@@ -5,10 +5,6 @@ require_once "../connect_db/config.php";
 
 require_once "../connect_db/config_pgsql.php";
 
-$sqlD = "DELETE FROM base_bdON";
-$sqlD = $pdo->prepare($sqlD);
-$sqlD->execute();
-
 $sql = "SELECT * FROM (SELECT (CASE WHEN v4.dthr_entrada_ultima_tramita>v3.promessa THEN 'Não é reaprazável. O prazo desse circuito foi perdido.' 
 ELSE 'Circuito Reaprazavel' END) AS reaprazavel, (CASE WHEN (dthr_entrada_ultima_tramita<=promessa) THEN (promessa-dthr_entrada_ultima_tramita)::text 
 ELSE ''::text END) as tempo_reaprazavel, v4.dthr_entrada_ultima_tramita, v3.* FROM ((SELECT v1.*, v2.dthr_entrada_tramita, v2.numero_ba 
@@ -21,7 +17,13 @@ AS dthr_entrada_ultima_tramita FROM reparos_tramita GROUP BY protocolo, dthr_ent
 ON v4.protocolo=v3.protocolo)) vfinal order by vfinal.igq asc, vfinal.promessa asc";
 $sql = $pdo_pgsql->prepare($sql);
 $sql->execute();
+
 if ($sql->rowCount()>0) {
+
+    $sqlD = "DELETE FROM base_bdON";
+    $sqlD = $pdo->prepare($sqlD);
+    $sqlD->execute();
+
     foreach ($sql->fetchAll() as $value) {
 
         $reaprazavel = $value['reaprazavel'];

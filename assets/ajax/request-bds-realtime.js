@@ -19,7 +19,7 @@ var result;
 
     });
 
-    } , 1000);
+    } , 360000);
 
 
 setInterval(function ajax_bdcorr() {
