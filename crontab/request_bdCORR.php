@@ -101,7 +101,7 @@ require "../connect_db/config.php";
         $sql = $pdo->prepare($sql);
         $sql->execute();
     } else {
-      $sql = "UPDATE base_bd_corr SET _reinc_30 = '$_reinc_30' WHERE protocolo = '$protocolo'";
+      $sql = "UPDATE base_bd_corr SET _reinc_30 = '$_reinc_30', _cliente = '$_cliente' WHERE protocolo = '$protocolo'";
       $sql = $pdo->prepare($sql);
       $sql->execute();
     }

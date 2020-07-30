@@ -149,6 +149,9 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
         </div>
     </div>
 
+
+
+    
     <script>
       setTimeout(function() {
       location.reload();
