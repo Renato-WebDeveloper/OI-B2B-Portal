@@ -39,7 +39,7 @@ require "../connect_db/config.php";
   // $thArray[] = $th->nodeValue;
   // echo $th->nodeValue;
   //}
-  
+  $a = 0;
   // Get all Table Headers and throw them in an array
   $rows = $dom->getElementsByTagName('tr');
   foreach ($rows as $row) {
@@ -105,7 +105,8 @@ require "../connect_db/config.php";
       $sql = $pdo->prepare($sql);
       $sql->execute();
     }
-
+    echo $a;
+    $a ++;
    }
   }
   // count the array for future comparison

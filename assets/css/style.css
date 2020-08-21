@@ -152,3 +152,18 @@
 .body{
 	color:#44688f;
 }
+table.table-hover tbody tr:hover {
+    background-color:rgb(220, 218, 235); 
+}
+
+.entrantes_total_div {
+	display: none;
+	position: absolute;
+}
+
+#entrantes_total:hover .entrantes_total_div{
+	display: block;
+	color: black;
+}
+
+
