@@ -44,7 +44,7 @@ $user = new User($pdo);
               $password = addslashes($_POST['password']);
 
               if($user_data = $user->loginUser($username, md5($password))) {
-                if ($user_data['status'] == 0) {
+                if ($user_data['status_'] == 0) {
                   ?>
                   <div class="alert alert-warning">
                       <strong>OPS!</strong> - Usuário aguardando ativação...

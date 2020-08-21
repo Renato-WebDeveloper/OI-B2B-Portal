@@ -152,7 +152,7 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
       <div class="card-header" style=" border:1px dotted; border-color: #3f5165;background-color: #498eec;">
         <div class="card-header-title font-size-lg  font-weight-normal" style="color:white;"> Visão analítica de indicadores </div>
       </div>
-      <span class="" scrollamount=0 style="font-family: lighter; margin-left: 275px; font-size: 11pt;">Metas -- 
+      <span  class="meta_supervisoes" scrollamount=0 style="font-family: lighter; margin-left: 275px; font-size: 11pt;">Metas -- 
       Entrada <i class="fa fa-check-circle-o"></i><strong> (4,89%)</strong>
        |  Repetidos <i class="fa fa-check-circle-o"></i><strong> (21,00%)</strong> 
        |  Prazo <i class="fa fa-check-circle-o"></i><strong> (96,00%)</strong></span>
