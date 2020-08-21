@@ -97,6 +97,36 @@ class User {
         }
     }
 
+    public function getAllUsers()
+    {
+        $sql = "SELECT * FROM usuarios";
+        $sql = $this->connMysql->query($sql);
+        if ($sql->rowCount()>0) {
+            $row = $sql->fetchAll();
+            return $row;
+        } 
+    }
+
+    public function deleteUser($id)
+    {
+        $sql = "DELETE FROM usuarios WHERE id = '$id'";
+        $sql = $this->connMysql->query($sql);
+    }
+
+    public function activeUser($id)
+    {
+        $sql = "UPDATE usuarios set status_ = '1' WHERE id = '$id'";
+        $sql = $this->connMysql->query($sql);
+
+    }
+    
+    public function disableUser($id)
+    {
+        $sql = "UPDATE usuarios set status_ = '0' WHERE id = '$id'";
+        $sql = $this->connMysql->query($sql);
+
+    }
+
 }
 
 

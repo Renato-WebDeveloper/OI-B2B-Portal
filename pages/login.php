@@ -44,8 +44,16 @@ $user = new User($pdo);
               $password = addslashes($_POST['password']);
 
               if($user_data = $user->loginUser($username, md5($password))) {
-                $_SESSION['id'] = $user_data['id'];
-                header("location: index.php");
+                if ($user_data['status'] == 0) {
+                  ?>
+                  <div class="alert alert-warning">
+                      <strong>OPS!</strong> - Usuário aguardando ativação...
+                  </div> 
+                  <?php
+                } else {
+                  $_SESSION['id'] = $user_data['id'];
+                  header("location: index.php");
+                }
               } else {
                 ?>
                 <div class="alert alert-danger">

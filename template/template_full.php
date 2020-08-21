@@ -83,6 +83,7 @@ if(empty($_SESSION['id']) && !isset($_SESSION['id'])) {
                   <?php if ($user->permissions('ADMIN')): ?>
                   <li><a><i class="fa fa-code"></i> Admin <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                      <li><a href="user-control.php">CONTROLE DE USUÁRIOS</a></li>
                       <li><a href="upload-csv-report.php">Upload CSV-MYSQL - Report</a></li>
                       <li><a href="upload-csv-plan.php">Upload CSV-MYSQL - Planta</a></li>
                       <li><a href="upload-csv-meta.php">Upload CSV-MYSQL - Meta</a></li>
