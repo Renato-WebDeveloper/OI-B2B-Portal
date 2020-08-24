@@ -7,8 +7,9 @@
               <div class="clearfix"></div>
             </footer>
             <!-- /footer content -->
-      </div>
-    </div>
+          </div>
+        </div>
+          
     <!-- jQuery -->
     <script src="../frontend_vendor/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
