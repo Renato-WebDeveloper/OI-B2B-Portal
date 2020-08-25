@@ -65,7 +65,7 @@ $user = new User($pdo);
             <form method="POST">
               <h1>Login Portal B2B</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Usuário" name="username"/>
+                <input type="text" class="form-control" placeholder="Usuário" name="username" maxlength="14"/>
               </div>
               <div>
                 <input type="email" class="form-control" placeholder="Email" name="email"/>
@@ -112,7 +112,7 @@ $user = new User($pdo);
             </div>
             <div class="modal-body">
               Em caso de perda de senha entre em contato com nosso suporte imediatamente.</br></br>
-              <strong>Email: suporte.portalb2b@gmail.com</strong>
+              <strong>Email: renato.figueiredo@seredesa.com.br</strong>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
