@@ -98,9 +98,9 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
             <div class="col-md-3 col-sm-4 tile_stats_count">
               <span class="count_top bg"><i class="fa fa-warning"></i> Reparos encerrados (Atual)</span>
               <div class="count" id="bd_corr"><?= $cardOn->getTotalRepairsFinallyR1AndR2()?></div>
-              <strong><span class="count_bottom" id="bdcorr_now"><?= $cardOn->testBdCorrNow() ?> </span> - Encerrados hoje</strong><br/>
+              <strong><span class="count_bottom" id="bdcorr_now"><?= $cardOn->bdCorrNow() ?> </span> - Encerrados hoje</strong><br/>
             <?php if($cardOn->getTotalPercentFinally() > $meta->getEntryMeta()): ?>
-              <strong><span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"><?= $cardOn->getTotalPercentFinally() ?></i> Percentual</span></strong><br/>
+              <strong><span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"><?= $cardOn->getTotalPercentFinally() ?></i>Percentual</span></strong><br/>
             <?php else: ?>
               <strong><span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><?= $cardOn->getTotalPercentFinally() ?></i> Percentual</span></strong><br/>
             <?php endif; ?>
@@ -117,10 +117,12 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
               <span class="count_top bg"><i class="fa fa-warning"></i> Repetidos</span>
             <?php if($cardOn->getPercentRepeated() > $meta->getRepeatedMeta()): ?>
               <div class="count" id="bd_rep"><?= $cardOn->getTotalRepairsRepeated() ?></div>
+              <strong><span class="count_bottom" id="bdcorr_now"><?= $cardOn->bdCorrRepeatedNow() ?> </span> - Repetidos hoje</strong><br/>
               <strong><span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i><?= $cardOn->getPercentRepeated() ?></i> Percentual</span></strong><br/>
               <span class="count_bottom"><i class="fa fa-check-circle-o"></i><strong> <?= $meta->getRepeatedMeta(); ?></strong> - Meta</span>
             <?php else: ?>
               <div class="count" id="bd_rep"><?= $cardOn->getTotalRepairsRepeated() ?></div>
+              <strong><span class="count_bottom" id="bdcorr_now"><?= $cardOn->bdCorrRepeatedNow() ?> </span> - Repetidos hoje</strong><br/>
               <strong><span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><?= $cardOn->getPercentRepeated() ?></i> Percentual</span></strong><br/>
               <span class="count_bottom"><i class="fa fa-check-circle-o"></i><strong> <?= $meta->getRepeatedMeta(); ?></strong> - Meta</span>
               <?php endif; ?>
@@ -129,11 +131,13 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
             <div class="col-md-3 col-sm-4  tile_stats_count">
               <span class="count_top bg "><i class="fa fa-check-square-o"></i> No prazo</span>
             <?php if($cardOn->getPercentOnTime() < $meta->getOnTimeMeta()): ?>
+              <strong><span class="count_bottom" id="bdcorr_now"><?= $cardOn->bdCorrOnTimeNow() ?> </span> - No Prazo hoje</strong><br/>
               <div class="count" id="bd_ontime"><?= $cardOn->getTotalRepairsOnTime() ?></div>
               <strong><span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i><?= $cardOn->getPercentOnTime() ?></i> Percentual </span></strong><br/>
               <span class="count_bottom"><i class="fa fa-check-circle-o" ></i><strong> <?= $meta->getOnTimeMeta(); ?></strong> - Meta</span>
             <?php else: ?>
               <div class="count" id="bd_ontime"><?= $cardOn->getTotalRepairsOnTime() ?></div>
+              <strong><span class="count_bottom" id="bdcorr_now"><?= $cardOn->bdCorrOnTimeNow() ?> </span> - No Prazo hoje</strong><br/>
               <strong><span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i><?= $cardOn->getPercentOnTime() ?></i> Percentual </span></strong><br/>
               <span class="count_bottom"><i class="fa fa-check-circle-o" ></i><strong> <?= $meta->getOnTimeMeta(); ?></strong> - Meta</span>
               <?php endif; ?>
@@ -440,7 +444,7 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
                   if ($percentRepeatedSupervision > $challengeRepeated) {
                     $colorRepeatedPercent = "red";
                   } else {
-                    $colorRepeatedPercent = '#3f5165';
+                    $colorRepeatedPercent = 'green';
                   }
 
 
@@ -554,7 +558,6 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
               <th class="text-center" style="font-weight: lighter;">Planta</th>
               <th class="text-center" style="font-weight: lighter;">Entrantes</th>
               <th class="text-center" style="font-weight: lighter;">No prazo</th>
-              <th class="text-center" style="font-weight: lighter;">% Prazo</th>
               <th class="text-left" style="font-weight: lighter;">Progresso</th>
               <th class="text-center" style="font-weight: lighter;">% Regional</th>
               <!--<th class="text-left" style="font-weight: lighter;">Projeção</th>
@@ -654,11 +657,7 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
                                 </div>
                             </div>
                           </td>
-                          <td class="text-center">
-                            <span class="pr- opacity-6" style="color: <?= $colorOnTimePercent ?>; border-bottom:1px dotted;">
-                              <i class="fa fa-business-time"></i><?= $percentOnTimeSupervision."%" ?> 
-                            </span> 
-                          </td>
+
                           <td class="text-center">
                             <div class="widget-content p-0">
                               <div class="widget-content-outer">
