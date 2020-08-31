@@ -34,7 +34,7 @@ if($sql->rowCount()>0){
 
 $sql = "SELECT count(*) as total_r1 FROM base_bd_corr 
 WHERE uf != 'MA' AND _cliente != 'BRASIL TELECOM COMUNICACAO MULTIMIDIA LTDA' 
-AND _cliente != 'TELEMAR NORTE LESTE SA EM RECUPERACAO JUDICIAL' AND _cliente != 'OI MOVEL SA EM RECUPERACAO JUDICIAL' AND fechamento >= '$date' AND igq = 'Dentro'"; //verificar depois a OI TELECOM PRA REMOVER
+AND _cliente NOT LIKE '%TELEMAR%' AND _cliente != 'OI MOVEL SA EM RECUPERACAO JUDICIAL' AND fechamento >= '$date' AND igq = 'Dentro'"; //verificar depois a OI TELECOM PRA REMOVER
 $sql = $pdo->prepare($sql);
 $sql->execute();
 if ($sql->rowCount()>0) {
