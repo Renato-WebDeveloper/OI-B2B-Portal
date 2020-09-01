@@ -10,7 +10,7 @@ class Meta
     private $geography;
 
 
-    public function __construct($pdo, $geography) 
+    public function __construct($pdo, $geography, $month='') 
     {
         $this->connMysql = $pdo;
         $this->month = date('m');
@@ -53,7 +53,6 @@ class Meta
 
     public function getOnTimeMeta() 
     {
-        global $pdo;
         $sql = "SELECT * FROM meta WHERE regiao = '$this->geography' AND mes = '$this->month' AND ano = '$this->year' AND tp_meta = 'prazo'";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute() or die(print_r($sql->errorInfo(), true));
@@ -61,7 +60,7 @@ class Meta
             $meta = $sql->fetch();
             $meta = $meta['meta'];
             $meta = str_replace(',','.',$meta);  
-            return $meta;  ;    
+            return $meta;      
         } else {
             return false;
         }

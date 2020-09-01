@@ -130,9 +130,9 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
 
             <div class="col-md-3 col-sm-4  tile_stats_count">
               <span class="count_top bg "><i class="fa fa-check-square-o"></i> No prazo</span>
-            <?php if($cardOn->getPercentOnTime() < $meta->getOnTimeMeta()): ?>
-              <strong><span class="count_bottom" id="bdcorr_now"><?= $cardOn->bdCorrOnTimeNow() ?> </span> - No Prazo hoje</strong><br/>
+            <?php if($cardOn->getPercentOnTime() < $meta->getOnTimeMeta() AND $cardOn->getPercentOnTime() != 100): //gambi?>
               <div class="count" id="bd_ontime"><?= $cardOn->getTotalRepairsOnTime() ?></div>
+              <strong><span class="count_bottom" id="bdcorr_now"><?= $cardOn->bdCorrOnTimeNow() ?> </span> - No Prazo hoje</strong><br/>
               <strong><span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i><?= $cardOn->getPercentOnTime() ?></i> Percentual </span></strong><br/>
               <span class="count_bottom"><i class="fa fa-check-circle-o" ></i><strong> <?= $meta->getOnTimeMeta(); ?></strong> - Meta</span>
             <?php else: ?>
@@ -158,7 +158,7 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
         <div class="card-header-title font-size-lg  font-weight-normal" style="color:white;"> Visão analítica de indicadores </div>
       </div>
       <span  class="meta_supervisoes" scrollamount=0 style="font-family: lighter; margin-left: 300px; font-size: 11pt;">Metas -- 
-      Entrada <i class="fa fa-check-circle-o"></i><strong> (4,89%)</strong>
+      Entrada <i class="fa fa-check-circle-o"></i><strong> (4,75%)</strong>
        |  Repetidos <i class="fa fa-check-circle-o"></i><strong> (21,00%)</strong> 
        |  Prazo <i class="fa fa-check-circle-o"></i><strong> (96,00%)</strong></span>
       
@@ -222,7 +222,7 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
                     $regionalPercent = ($totalEntrySupervision / $planSupervisionTotal) * 100;
                     $regionalPercent = substr($regionalPercent,0,5)."%";
                     
-                    $challenge = 0.0489;
+                    $challenge = 0.0475;
 
                     $repairLimit = $planSupervision * $challenge;
                     $repairLimit = ceil($repairLimit);
@@ -394,6 +394,9 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
 
                   $percentRepeatedSupervision = ($totalRepeatedSupervision / $totalEntrySupervision) * 100;
                   $percentRepeatedSupervision = substr($percentRepeatedSupervision,0,5);
+                  if($percentRepeatedSupervision == 'NAN') { //gambi
+                    $percentRepeatedSupervision = 0;
+                  }
 
                   $planSupervisionTotal = $flightPlan->planSupervisionTotal();
                   
@@ -408,7 +411,8 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
                   $challengeRepeated = 0.2100;
 
                   $challengeRepeated = $challengeRepeated * 100;
-                  $progressRepeated = ($percentRepeatedSupervision - $challengeRepeated + 100)."%";
+                  $progressRepeated = ($percentRepeatedSupervision / $challengeRepeated * 100);
+                  $progressRepeated = substr($progressRepeated,0,6)."%";
                   $progressRepeatedNumber = $progressRepeated;
                 
 
@@ -604,7 +608,11 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
 
                     $challengeOnTime = $challengeOnTime * 100;
                     $progressOnTime = ($totalOnTimeSupervision / $totalEntrySupervision) * 100;
-                    $progressOnTime = substr($progressOnTime,0,5)."%";
+                    $progressOnTime = substr($progressOnTime,0,5);
+                    if ($progressOnTime == 'NAN') {
+                      $progressOnTime = 100;
+                    }
+                    $progressOnTime = $progressOnTime."%";
                     $progressOnTimeNumber = $progressOnTime;
                   
 

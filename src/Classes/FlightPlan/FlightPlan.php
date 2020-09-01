@@ -39,7 +39,7 @@ class FlightPlan {
         
         $sql = "SELECT count(*) as total FROM base_bdCorr_sup WHERE supervisao = '$supervision' AND uf != 'MA' 
         AND _cliente != 'BRASIL TELECOM COMUNICACAO MULTIMIDIA LTDA' 
-        AND _cliente != 'TELEMAR NORTE LESTE SA EM RECUPERACAO JUDICIAL' AND _cliente != 'OI MOVEL SA EM RECUPERACAO JUDICIAL' 
+        AND _cliente NOT LIKE '%TELEMAR%' AND _cliente != 'OI MOVEL SA EM RECUPERACAO JUDICIAL' 
         AND fechamento >= '$this->date'";
         $sql = $this->connMysql->prepare($sql);
         $sql->execute();
@@ -187,7 +187,7 @@ class FlightPlan {
 
         $sql = "SELECT count(*) as total FROM base_bdCorr_sup
         WHERE uf != 'MA' AND _cliente != 'BRASIL TELECOM COMUNICACAO MULTIMIDIA LTDA' 
-        AND _cliente != 'TELEMAR NORTE LESTE SA EM RECUPERACAO JUDICIAL' AND _cliente != 'OI MOVEL SA EM RECUPERACAO JUDICIAL'
+        AND _cliente NOT LIKE '%TELEMAR%' AND _cliente != 'OI MOVEL SA EM RECUPERACAO JUDICIAL'
         AND _reinc_30 = 'S' AND supervisao = '$supervision' AND fechamento >= '$this->date'"; 
         $sql = $this->connMysql->prepare($sql);
         $sql->execute();
@@ -241,7 +241,7 @@ class FlightPlan {
 
         $sql = "SELECT count(*) as total FROM base_bdCorr_sup
         WHERE uf != 'MA' AND _cliente != 'BRASIL TELECOM COMUNICACAO MULTIMIDIA LTDA' 
-        AND _cliente != 'TELEMAR NORTE LESTE SA EM RECUPERACAO JUDICIAL' AND _cliente != 'OI MOVEL SA EM RECUPERACAO JUDICIAL'
+        AND _cliente NOT LIKE '%TELEMAR%' AND _cliente != 'OI MOVEL SA EM RECUPERACAO JUDICIAL'
         AND igq = 'Dentro' AND supervisao = '$supervision' AND fechamento >= '$this->date'"; 
         $sql = $this->connMysql->prepare($sql);
         $sql->execute();
