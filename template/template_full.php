@@ -90,7 +90,7 @@ if(empty($_SESSION['id']) && !isset($_SESSION['id'])) {
                     </ul>
                   </li>
                   <?php endif; ?>
-                  <?php if ($user->permissions('TESTER')): ?>
+                  <?php if ($user->permissions('DEV')): ?>
                   <li><a><i class="fa fa-cloud-download"></i> Downloads <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="base-download.php?bdCorr=1">Base de reparos R1</a></li>
