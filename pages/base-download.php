@@ -1,3 +1,9 @@
+<head>
+    <meta charset="UTF-8">
+</head>
+<style>
+    tr:nth-child(even) {background-color: #f2f2f2}
+</style>
 <?php
 
 require "../connect_db/config.php";
@@ -5,28 +11,28 @@ require "../connect_db/config.php";
     if (isset($_GET['bdCorr']) && !empty($_GET['bdCorr'])) {
 
         $dadosXls  = "";
-        $dadosXls .= "  <table border='1' >";
-        $dadosXls .= "          <tr>";
-        $dadosXls .= "          <th>Protocolo</th>";
-        $dadosXls .= "          <th>Local</th>";
-        $dadosXls .= "          <th>Acesso</th>";
-        $dadosXls .= "          <th>Cliente</th>";
-        $dadosXls .= "          <th>Serviço</th>";
-        $dadosXls .= "          <th>Produto</th>";
-        $dadosXls .= "          <th>UF</th>";
-        $dadosXls .= "          <th>U_F</th>";
-        $dadosXls .= "          <th>GRA</th>";
-        $dadosXls .= "          <th>Repetido</th>";
-        $dadosXls .= "          <th>UF - Posto</th>";
-        $dadosXls .= "          <th>Posto</th>";
-        $dadosXls .= "          <th>GRA - Posto</th>";
-        $dadosXls .= "          <th>Abertura</th>";
-        $dadosXls .= "          <th>Promessa</th>";
-        $dadosXls .= "          <th>Fechamento</th>";
-        $dadosXls .= "          <th>Prazo</th>";
-        $dadosXls .= "          <th>Supervisor</th>";
-        $dadosXls .= "          <th>Supervisao</th>";
+        $dadosXls .= "  <table border='1'>";
+        $dadosXls .= "      <tr>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Local</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Acesso</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Cliente</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Serviço</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Produto</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>UF</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>U_F</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>GRA</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Repetido</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>UF - Posto</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Posto</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>GRA - Posto</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Abertura</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Promessa</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Fechamento</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Prazo</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Supervisor</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Supervisao</th>";
         $dadosXls .= "      </tr>";
+
 
         $year = date('Y');
         $month = date('m');
@@ -47,7 +53,6 @@ require "../connect_db/config.php";
             $result = $sql->fetchAll();
             foreach ($result as $res) {
                 $dadosXls .= "      <tr>";
-                $dadosXls .= "          <td>".$res['protocolo']."</td>";
                 $dadosXls .= "          <td>".$res['local']."</td>";
                 $dadosXls .= "          <td>".$res['acesso']."</td>";
                 $dadosXls .= "          <td>".$res['_cliente']."</td>";
@@ -79,7 +84,6 @@ require "../connect_db/config.php";
                 $result = $sql->fetchAll();
                 foreach ($result as $res) {
                     $dadosXls .= "      <tr>";
-                    $dadosXls .= "          <td>".$res['protocolo']."</td>";
                     $dadosXls .= "          <td>".$res['local_']."</td>";
                     $dadosXls .= "          <td>".$res['num_meio_acesso']."</td>";
                     $dadosXls .= "          <td>".$res['nome_cliente']."</td>";
@@ -129,19 +133,19 @@ require "../connect_db/config.php";
         $dadosXls  = "";
         $dadosXls .= "  <table border='1' >";
         $dadosXls .= "          <tr>";
-        $dadosXls .= "          <th>Local</th>";
-        $dadosXls .= "          <th>Acesso</th>";
-        $dadosXls .= "          <th>Cliente_ponta_A</th>";
-        $dadosXls .= "          <th>Cliente_ponta_B</th>";
-        $dadosXls .= "          <th>UF_A</th>";
-        $dadosXls .= "          <th>UF_B</th>";
-        $dadosXls .= "          <th>GRA</th>";
-        $dadosXls .= "          <th>Repetido</th>";
-        $dadosXls .= "          <th>Abertura</th>";
-        $dadosXls .= "          <th>Fechamento</th>";
-        $dadosXls .= "          <th>Prazo</th>";
-        $dadosXls .= "          <th>Supervisor</th>";
-        $dadosXls .= "          <th>Supervisao</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Local</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Acesso</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Cliente_ponta_A</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Cliente_ponta_B</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>UF_A</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>UF_B</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>GRA</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Repetido</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Abertura</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Fechamento</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Prazo</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Supervisor</th>";
+        $dadosXls .= "          <th style='background-color:#0277bd;color:white;'>Supervisao</th>";
         $dadosXls .= "      </tr>";
 
         $year = date('Y');

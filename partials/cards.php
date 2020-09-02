@@ -158,7 +158,7 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
         <div class="card-header-title font-size-lg  font-weight-normal" style="color:white;"> Visão analítica de indicadores </div>
       </div>
       <span  class="meta_supervisoes" scrollamount=0 style="font-family: lighter; margin-left: 300px; font-size: 11pt;">Metas -- 
-      Entrada <i class="fa fa-check-circle-o"></i><strong> (4,75%)</strong>
+          Entrada <i class="fa fa-check-circle-o"></i><strong> (4,75%)</strong>
        |  Repetidos <i class="fa fa-check-circle-o"></i><strong> (21,00%)</strong> 
        |  Prazo <i class="fa fa-check-circle-o"></i><strong> (96,00%)</strong></span>
       
@@ -727,7 +727,7 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
     </div>
     <br/>
 
-    <!--<a href="base-download.php?bdCorr=1">xls</a>
+    
 
     
   
