@@ -727,5 +727,7 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
     </div>
     <br/>
 
+    <!--<a href="base-download.php?bdCorr=1">xls</a>
+
     
   
