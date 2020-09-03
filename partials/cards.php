@@ -727,6 +727,4 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
     </div>
     <br/>
 
-   
-  
-teste de push
+
