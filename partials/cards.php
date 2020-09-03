@@ -728,5 +728,4 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
     <br/>
 
    
-Contribution successfully tested    
   
