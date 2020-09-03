@@ -727,7 +727,6 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
     </div>
     <br/>
 
-   CONTRIBUIÇÃO TESTADA COM SUCESSO 
-
-    
+   
+Contribution successfully tested    
   
