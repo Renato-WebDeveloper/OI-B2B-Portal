@@ -1,4 +1,4 @@
-<script>
+﻿<script>
   setTimeout(function() {
   location.reload();
   }, 600000);
@@ -727,7 +727,6 @@ $cardOn = new CardOnline($pdo, $plan->getTotalPlan());
     </div>
     <br/>
 
-    
-
-    
+   
+Contribution successfully tested    
   
